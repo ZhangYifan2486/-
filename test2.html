@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        /*父亲*/
+        .div1{
+            position: relative;
+            display: flex;
+            /*实现左右居中,flex-start,flex-end*/
+            justify-content: center;
+            /*实现上下左右居中*/
+            align-items: center;
+            width: 500px;
+            height: 500px;
+            background: aqua;
+        }
+
+        /*儿子盒子*/
+        .div2{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        .div3{
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1" class="div1">
+    <div id="div2" class="div2"></div>
+    <div id="div3" class="div3"></div>
+</div>
+<script>
+    // const arr = [
+    //     {
+    //         id:1
+    //     },
+    //     {
+    //         id:1
+    //     },
+    //     {
+    //         id:2
+    //     },
+    //     {
+    //         id:3
+    //     },
+    //     {
+    //         id:1
+    //     }
+    //
+    // ]
+    // // 空对象
+    // let arr2 = []
+    // for( let item of arr ){
+    //     if (item.id === 1){
+    //         arr2.push(item)
+    //     }
+    // }
+    // console.log(arr2)
+
+
+    const arr = [
+        {
+            id:1
+        },
+        {
+            id:1
+        },
+        {
+            id:2
+        },
+        {
+            id:3
+        },
+        {
+            id:1
+        }
+
+    ]
+    // 空对象
+    let arr3 = []
+    //传入function为参数，function(currentValue,)
+     arr3 =  arr.filter(function (item){
+         return item.id === 1
+     })
+    console.log(arr3)
+
+
+
+    // 模拟后端数据
+    const response = {
+        "data": [
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+            {"id": 1, "name": "张三"},
+            {"id": 2, "name": "李四"},
+
+        ],
+    }
+    //
+    let data = response.data
+
+    let pageSize = 5;
+    // 总页数取整
+    let total = Math.ceil(data.length/pageSize)
+    //当前页数
+    let nowPage = 1
+    // 函数获取当前页数据
+    function getData(nowPage){
+        let start = (nowPage-1)*pageSize
+        let end = start + pageSize
+        data.slice(start,end)
+        return data.slice(start,end)
+    }
+    //赋值数据
+    let nowData = getData(nowPage)
+
+    console.log(nowData)
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
